@@ -1,0 +1,36 @@
+void SingleGameComponent::__gc_traverse_members(visitproc _visit, void* _data) {
+    _visit(info, _data);
+    _visit(viewarea, _data);
+    _visit(player, _data);
+    _visit(world, _data);
+    _visit(tstartarea, _data);
+    _visit(cameraarea, _data);
+    _visit(tendarea, _data);
+}
+
+void SingleGameComponent::__gc_clear_members() throw() {
+    info = NULL;
+    viewarea = NULL;
+    player = NULL;
+    world = NULL;
+    tstartarea = NULL;
+    cameraarea = NULL;
+    tendarea = NULL;
+}
+
+void SingleGameComponent::__gc_traverse(visitproc _visit, void* _data) {
+    SingleGameComponent::__gc_traverse_members(_visit, _data);
+    Component::__gc_traverse_members(_visit, _data);
+}
+
+void SingleGameComponent::__gc_clear() throw() {
+    SingleGameComponent::__gc_clear_members();
+    Component::__gc_clear_members();
+}
+
+bool SingleGameComponent::__gc_needtrack() throw() {
+    return true;
+}
+
+string SingleGameComponent::classname() const throw() { return "SingleGameComponent"; }
+

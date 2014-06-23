@@ -1,0 +1,30 @@
+void DebugActor::__gc_traverse_members(visitproc _visit, void* _data) {
+}
+
+void DebugActor::__gc_clear_members() throw() {
+}
+
+void DebugActor::__gc_traverse(visitproc _visit, void* _data) {
+    DebugActor::__gc_traverse_members(_visit, _data);
+    ServerActor::__gc_traverse_members(_visit, _data);
+    BaseActor::__gc_traverse_members(_visit, _data);
+    Bumpable::__gc_traverse_members(_visit, _data);
+    SolidActor::__gc_traverse_members(_visit, _data);
+    Actor::__gc_traverse_members(_visit, _data);
+}
+
+void DebugActor::__gc_clear() throw() {
+    DebugActor::__gc_clear_members();
+    ServerActor::__gc_clear_members();
+    BaseActor::__gc_clear_members();
+    Bumpable::__gc_clear_members();
+    SolidActor::__gc_clear_members();
+    Actor::__gc_clear_members();
+}
+
+bool DebugActor::__gc_needtrack() throw() {
+    return true;
+}
+
+string DebugActor::classname() const throw() { return "DebugActor"; }
+

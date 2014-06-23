@@ -1,0 +1,54 @@
+void World::__gc_traverse_members(visitproc _visit, void* _data) {
+    for(vector<sptr<Actor> >::iterator _itr1 = (staticactors).begin(); _itr1 != (staticactors).end(); ++_itr1) {
+        _visit(*_itr1, _data);
+    }
+    for(vector<vector<sptr<Area> > >::iterator _itr1 = (extragroups).begin(); _itr1 != (extragroups).end(); ++_itr1) {
+        for(vector<sptr<Area> >::iterator _itr2 = (*_itr1).begin(); _itr2 != (*_itr1).end(); ++_itr2) {
+            _visit(*_itr2, _data);
+        }
+    }
+    for(map<int, sptr<Actor> >::iterator _itr1 = (staticactorByID).begin(); _itr1 != (staticactorByID).end(); ++_itr1) {
+        _visit((*_itr1).second, _data);
+    }
+    for(map<string, sptr<Area> >::iterator _itr1 = (areaByName).begin(); _itr1 != (areaByName).end(); ++_itr1) {
+        _visit((*_itr1).second, _data);
+    }
+    for(vector<sptr<Actor> >::iterator _itr1 = (actors).begin(); _itr1 != (actors).end(); ++_itr1) {
+        _visit(*_itr1, _data);
+    }
+    for(map<int, sptr<Actor> >::iterator _itr1 = (actorByID).begin(); _itr1 != (actorByID).end(); ++_itr1) {
+        _visit((*_itr1).second, _data);
+    }
+    for(vector<sptr<Actor> >::iterator _itr1 = (pendingactors).begin(); _itr1 != (pendingactors).end(); ++_itr1) {
+        _visit(*_itr1, _data);
+    }
+    for(vector<sptr<Area> >::iterator _itr1 = (areas).begin(); _itr1 != (areas).end(); ++_itr1) {
+        _visit(*_itr1, _data);
+    }
+}
+
+void World::__gc_clear_members() throw() {
+    staticactors.clear();
+    extragroups.clear();
+    staticactorByID.clear();
+    areaByName.clear();
+    actors.clear();
+    actorByID.clear();
+    pendingactors.clear();
+    areas.clear();
+}
+
+void World::__gc_traverse(visitproc _visit, void* _data) {
+    World::__gc_traverse_members(_visit, _data);
+}
+
+void World::__gc_clear() throw() {
+    World::__gc_clear_members();
+}
+
+bool World::__gc_needtrack() throw() {
+    return true;
+}
+
+string World::classname() const throw() { return "World"; }
+

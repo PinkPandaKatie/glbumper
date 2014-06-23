@@ -1,0 +1,14 @@
+void Flag::__gc_traverse(visitproc _visit, void* _data) {
+    DynamicActor::__gc_traverse(_visit, _data);
+}
+
+void Flag::__gc_clear() {
+    DynamicActor::__gc_clear();
+}
+
+bool Flag::__gc_needtrack() {
+    return DynamicActor::__gc_needtrack();
+}
+
+string Flag::classname() const { return "Flag"; }
+

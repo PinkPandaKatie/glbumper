@@ -1,0 +1,20 @@
+void Thread::__gc_traverse_members(visitproc _visit, void* _data) {
+}
+
+void Thread::__gc_clear_members() throw() {
+}
+
+void Thread::__gc_traverse(visitproc _visit, void* _data) {
+    Thread::__gc_traverse_members(_visit, _data);
+}
+
+void Thread::__gc_clear() throw() {
+    Thread::__gc_clear_members();
+}
+
+bool Thread::__gc_needtrack() throw() {
+    return false;
+}
+
+string Thread::classname() const throw() { return "Thread"; }
+

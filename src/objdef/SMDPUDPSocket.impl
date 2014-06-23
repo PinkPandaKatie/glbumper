@@ -1,0 +1,30 @@
+void SMDPUDPSocket::__gc_traverse_members(visitproc _visit, void* _data) {
+    for(map<Address, sptr<SMDPUDPConnection> >::iterator _itr1 = (connections).begin(); _itr1 != (connections).end(); ++_itr1) {
+        _visit((*_itr1).second, _data);
+    }
+    _visit(mgr, _data);
+}
+
+void SMDPUDPSocket::__gc_clear_members() throw() {
+    connections.clear();
+    mgr = NULL;
+}
+
+void SMDPUDPSocket::__gc_traverse(visitproc _visit, void* _data) {
+    SMDPUDPSocket::__gc_traverse_members(_visit, _data);
+    Socket::__gc_traverse_members(_visit, _data);
+    UDPSocket::__gc_traverse_members(_visit, _data);
+}
+
+void SMDPUDPSocket::__gc_clear() throw() {
+    SMDPUDPSocket::__gc_clear_members();
+    Socket::__gc_clear_members();
+    UDPSocket::__gc_clear_members();
+}
+
+bool SMDPUDPSocket::__gc_needtrack() throw() {
+    return true;
+}
+
+string SMDPUDPSocket::classname() const throw() { return "SMDPUDPSocket"; }
+

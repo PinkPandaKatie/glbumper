@@ -1,0 +1,28 @@
+void SolidActor::__gc_traverse_members(visitproc _visit, void* _data) {
+}
+
+void SolidActor::__gc_clear_members() throw() {
+}
+
+void SolidActor::__gc_traverse(visitproc _visit, void* _data) {
+    SolidActor::__gc_traverse_members(_visit, _data);
+    Bumpable::__gc_traverse_members(_visit, _data);
+    ServerActor::__gc_traverse_members(_visit, _data);
+    BaseActor::__gc_traverse_members(_visit, _data);
+    Actor::__gc_traverse_members(_visit, _data);
+}
+
+void SolidActor::__gc_clear() throw() {
+    SolidActor::__gc_clear_members();
+    Bumpable::__gc_clear_members();
+    ServerActor::__gc_clear_members();
+    BaseActor::__gc_clear_members();
+    Actor::__gc_clear_members();
+}
+
+bool SolidActor::__gc_needtrack() throw() {
+    return true;
+}
+
+string SolidActor::classname() const throw() { return "SolidActor"; }
+

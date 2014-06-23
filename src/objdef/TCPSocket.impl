@@ -1,0 +1,22 @@
+void TCPSocket::__gc_traverse_members(visitproc _visit, void* _data) {
+}
+
+void TCPSocket::__gc_clear_members() throw() {
+}
+
+void TCPSocket::__gc_traverse(visitproc _visit, void* _data) {
+    TCPSocket::__gc_traverse_members(_visit, _data);
+    Socket::__gc_traverse_members(_visit, _data);
+}
+
+void TCPSocket::__gc_clear() throw() {
+    TCPSocket::__gc_clear_members();
+    Socket::__gc_clear_members();
+}
+
+bool TCPSocket::__gc_needtrack() throw() {
+    return false;
+}
+
+string TCPSocket::classname() const throw() { return "TCPSocket"; }
+

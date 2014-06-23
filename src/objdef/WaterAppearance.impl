@@ -1,0 +1,26 @@
+void WaterAppearance::__gc_traverse_members(visitproc _visit, void* _data) {
+    _visit(pl, _data);
+}
+
+void WaterAppearance::__gc_clear_members() throw() {
+    pl = NULL;
+}
+
+void WaterAppearance::__gc_traverse(visitproc _visit, void* _data) {
+    WaterAppearance::__gc_traverse_members(_visit, _data);
+    BaseAppearance::__gc_traverse_members(_visit, _data);
+    Appearance::__gc_traverse_members(_visit, _data);
+}
+
+void WaterAppearance::__gc_clear() throw() {
+    WaterAppearance::__gc_clear_members();
+    BaseAppearance::__gc_clear_members();
+    Appearance::__gc_clear_members();
+}
+
+bool WaterAppearance::__gc_needtrack() throw() {
+    return true;
+}
+
+string WaterAppearance::classname() const throw() { return "WaterAppearance"; }
+

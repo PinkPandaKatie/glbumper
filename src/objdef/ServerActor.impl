@@ -1,0 +1,26 @@
+void ServerActor::__gc_traverse_members(visitproc _visit, void* _data) {
+    _visit(comm, _data);
+}
+
+void ServerActor::__gc_clear_members() throw() {
+    comm = NULL;
+}
+
+void ServerActor::__gc_traverse(visitproc _visit, void* _data) {
+    ServerActor::__gc_traverse_members(_visit, _data);
+    Bumpable::__gc_traverse_members(_visit, _data);
+    Actor::__gc_traverse_members(_visit, _data);
+}
+
+void ServerActor::__gc_clear() throw() {
+    ServerActor::__gc_clear_members();
+    Bumpable::__gc_clear_members();
+    Actor::__gc_clear_members();
+}
+
+bool ServerActor::__gc_needtrack() throw() {
+    return true;
+}
+
+string ServerActor::classname() const throw() { return "ServerActor"; }
+

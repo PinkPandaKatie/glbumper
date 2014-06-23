@@ -1,0 +1,30 @@
+void Spark::__gc_traverse_members(visitproc _visit, void* _data) {
+}
+
+void Spark::__gc_clear_members() throw() {
+}
+
+void Spark::__gc_traverse(visitproc _visit, void* _data) {
+    Spark::__gc_traverse_members(_visit, _data);
+    ServerActor::__gc_traverse_members(_visit, _data);
+    BaseActor::__gc_traverse_members(_visit, _data);
+    Bumpable::__gc_traverse_members(_visit, _data);
+    DynamicActor::__gc_traverse_members(_visit, _data);
+    Actor::__gc_traverse_members(_visit, _data);
+}
+
+void Spark::__gc_clear() throw() {
+    Spark::__gc_clear_members();
+    ServerActor::__gc_clear_members();
+    BaseActor::__gc_clear_members();
+    Bumpable::__gc_clear_members();
+    DynamicActor::__gc_clear_members();
+    Actor::__gc_clear_members();
+}
+
+bool Spark::__gc_needtrack() throw() {
+    return true;
+}
+
+string Spark::classname() const throw() { return "Spark"; }
+

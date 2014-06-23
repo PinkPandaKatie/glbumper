@@ -1,0 +1,20 @@
+void GameInterface::__gc_traverse_members(visitproc _visit, void* _data) {
+}
+
+void GameInterface::__gc_clear_members() throw() {
+}
+
+void GameInterface::__gc_traverse(visitproc _visit, void* _data) {
+    GameInterface::__gc_traverse_members(_visit, _data);
+}
+
+void GameInterface::__gc_clear() throw() {
+    GameInterface::__gc_clear_members();
+}
+
+bool GameInterface::__gc_needtrack() throw() {
+    return false;
+}
+
+string GameInterface::classname() const throw() { return "GameInterface"; }
+

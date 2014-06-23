@@ -1,0 +1,28 @@
+void SMDPConnection::__gc_traverse_members(visitproc _visit, void* _data) {
+    _visit(mgr, _data);
+    _visit(handler, _data);
+    for(vector<sptr<Message> >::iterator _itr1 = (receive_queue).begin(); _itr1 != (receive_queue).end(); ++_itr1) {
+        _visit(*_itr1, _data);
+    }
+}
+
+void SMDPConnection::__gc_clear_members() throw() {
+    mgr = NULL;
+    handler = NULL;
+    receive_queue.clear();
+}
+
+void SMDPConnection::__gc_traverse(visitproc _visit, void* _data) {
+    SMDPConnection::__gc_traverse_members(_visit, _data);
+}
+
+void SMDPConnection::__gc_clear() throw() {
+    SMDPConnection::__gc_clear_members();
+}
+
+bool SMDPConnection::__gc_needtrack() throw() {
+    return true;
+}
+
+string SMDPConnection::classname() const throw() { return "SMDPConnection"; }
+

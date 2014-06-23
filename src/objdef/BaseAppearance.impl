@@ -1,0 +1,24 @@
+void BaseAppearance::__gc_traverse_members(visitproc _visit, void* _data) {
+    _visit(asnd, _data);
+}
+
+void BaseAppearance::__gc_clear_members() throw() {
+    asnd = NULL;
+}
+
+void BaseAppearance::__gc_traverse(visitproc _visit, void* _data) {
+    BaseAppearance::__gc_traverse_members(_visit, _data);
+    Appearance::__gc_traverse_members(_visit, _data);
+}
+
+void BaseAppearance::__gc_clear() throw() {
+    BaseAppearance::__gc_clear_members();
+    Appearance::__gc_clear_members();
+}
+
+bool BaseAppearance::__gc_needtrack() throw() {
+    return true;
+}
+
+string BaseAppearance::classname() const throw() { return "BaseAppearance"; }
+

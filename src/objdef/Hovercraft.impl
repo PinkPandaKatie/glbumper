@@ -1,0 +1,30 @@
+void Hovercraft::__gc_traverse_members(visitproc _visit, void* _data) {
+}
+
+void Hovercraft::__gc_clear_members() throw() {
+}
+
+void Hovercraft::__gc_traverse(visitproc _visit, void* _data) {
+    Hovercraft::__gc_traverse_members(_visit, _data);
+    ServerActor::__gc_traverse_members(_visit, _data);
+    BaseActor::__gc_traverse_members(_visit, _data);
+    Bumpable::__gc_traverse_members(_visit, _data);
+    DynamicActor::__gc_traverse_members(_visit, _data);
+    Actor::__gc_traverse_members(_visit, _data);
+}
+
+void Hovercraft::__gc_clear() throw() {
+    Hovercraft::__gc_clear_members();
+    ServerActor::__gc_clear_members();
+    BaseActor::__gc_clear_members();
+    Bumpable::__gc_clear_members();
+    DynamicActor::__gc_clear_members();
+    Actor::__gc_clear_members();
+}
+
+bool Hovercraft::__gc_needtrack() throw() {
+    return true;
+}
+
+string Hovercraft::classname() const throw() { return "Hovercraft"; }
+

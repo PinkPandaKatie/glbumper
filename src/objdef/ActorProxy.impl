@@ -1,0 +1,32 @@
+void ActorProxy::__gc_traverse_members(visitproc _visit, void* _data) {
+    _visit((write).area, _data);
+    _visit((readnew).area, _data);
+    _visit((readold).area, _data);
+    _visit((commit).area, _data);
+}
+
+void ActorProxy::__gc_clear_members() throw() {
+    (write).area = NULL;
+    (readnew).area = NULL;
+    (readold).area = NULL;
+    (commit).area = NULL;
+}
+
+void ActorProxy::__gc_traverse(visitproc _visit, void* _data) {
+    ActorProxy::__gc_traverse_members(_visit, _data);
+    Bumpable::__gc_traverse_members(_visit, _data);
+    Actor::__gc_traverse_members(_visit, _data);
+}
+
+void ActorProxy::__gc_clear() throw() {
+    ActorProxy::__gc_clear_members();
+    Bumpable::__gc_clear_members();
+    Actor::__gc_clear_members();
+}
+
+bool ActorProxy::__gc_needtrack() throw() {
+    return true;
+}
+
+string ActorProxy::classname() const throw() { return "ActorProxy"; }
+

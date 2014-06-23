@@ -1,0 +1,24 @@
+void ClientMessageHandler::__gc_traverse_members(visitproc _visit, void* _data) {
+    _visit(ccomp, _data);
+}
+
+void ClientMessageHandler::__gc_clear_members() throw() {
+    ccomp = NULL;
+}
+
+void ClientMessageHandler::__gc_traverse(visitproc _visit, void* _data) {
+    ClientMessageHandler::__gc_traverse_members(_visit, _data);
+    MessageHandler::__gc_traverse_members(_visit, _data);
+}
+
+void ClientMessageHandler::__gc_clear() throw() {
+    ClientMessageHandler::__gc_clear_members();
+    MessageHandler::__gc_clear_members();
+}
+
+bool ClientMessageHandler::__gc_needtrack() throw() {
+    return true;
+}
+
+string ClientMessageHandler::classname() const throw() { return "ClientMessageHandler"; }
+

@@ -1,0 +1,24 @@
+void Decoration::__gc_traverse_members(visitproc _visit, void* _data) {
+}
+
+void Decoration::__gc_clear_members() throw() {
+}
+
+void Decoration::__gc_traverse(visitproc _visit, void* _data) {
+    Decoration::__gc_traverse_members(_visit, _data);
+    Bumpable::__gc_traverse_members(_visit, _data);
+    Actor::__gc_traverse_members(_visit, _data);
+}
+
+void Decoration::__gc_clear() throw() {
+    Decoration::__gc_clear_members();
+    Bumpable::__gc_clear_members();
+    Actor::__gc_clear_members();
+}
+
+bool Decoration::__gc_needtrack() throw() {
+    return true;
+}
+
+string Decoration::classname() const throw() { return "Decoration"; }
+

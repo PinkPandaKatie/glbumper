@@ -1,0 +1,20 @@
+void Bumpable::__gc_traverse_members(visitproc _visit, void* _data) {
+}
+
+void Bumpable::__gc_clear_members() throw() {
+}
+
+void Bumpable::__gc_traverse(visitproc _visit, void* _data) {
+    Bumpable::__gc_traverse_members(_visit, _data);
+}
+
+void Bumpable::__gc_clear() throw() {
+    Bumpable::__gc_clear_members();
+}
+
+bool Bumpable::__gc_needtrack() throw() {
+    return false;
+}
+
+string Bumpable::classname() const throw() { return "Bumpable"; }
+

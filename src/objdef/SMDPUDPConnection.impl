@@ -1,0 +1,32 @@
+void SMDPUDPConnection::__gc_traverse_members(visitproc _visit, void* _data) {
+    for(deque<sptr<Message> >::iterator _itr1 = (reliable_messages).begin(); _itr1 != (reliable_messages).end(); ++_itr1) {
+        _visit(*_itr1, _data);
+    }
+    for(deque<sptr<Message> >::iterator _itr1 = (unreliable_messages).begin(); _itr1 != (unreliable_messages).end(); ++_itr1) {
+        _visit(*_itr1, _data);
+    }
+    _visit(sock, _data);
+}
+
+void SMDPUDPConnection::__gc_clear_members() throw() {
+    reliable_messages.clear();
+    unreliable_messages.clear();
+    sock = NULL;
+}
+
+void SMDPUDPConnection::__gc_traverse(visitproc _visit, void* _data) {
+    SMDPUDPConnection::__gc_traverse_members(_visit, _data);
+    SMDPConnection::__gc_traverse_members(_visit, _data);
+}
+
+void SMDPUDPConnection::__gc_clear() throw() {
+    SMDPUDPConnection::__gc_clear_members();
+    SMDPConnection::__gc_clear_members();
+}
+
+bool SMDPUDPConnection::__gc_needtrack() throw() {
+    return true;
+}
+
+string SMDPUDPConnection::classname() const throw() { return "SMDPUDPConnection"; }
+

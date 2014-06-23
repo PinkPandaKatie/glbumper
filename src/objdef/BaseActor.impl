@@ -1,0 +1,26 @@
+void BaseActor::__gc_traverse_members(visitproc _visit, void* _data) {
+}
+
+void BaseActor::__gc_clear_members() throw() {
+}
+
+void BaseActor::__gc_traverse(visitproc _visit, void* _data) {
+    BaseActor::__gc_traverse_members(_visit, _data);
+    Bumpable::__gc_traverse_members(_visit, _data);
+    ServerActor::__gc_traverse_members(_visit, _data);
+    Actor::__gc_traverse_members(_visit, _data);
+}
+
+void BaseActor::__gc_clear() throw() {
+    BaseActor::__gc_clear_members();
+    Bumpable::__gc_clear_members();
+    ServerActor::__gc_clear_members();
+    Actor::__gc_clear_members();
+}
+
+bool BaseActor::__gc_needtrack() throw() {
+    return true;
+}
+
+string BaseActor::classname() const throw() { return "BaseActor"; }
+

@@ -1,0 +1,24 @@
+void Plane::__gc_traverse_members(visitproc _visit, void* _data) {
+    _visit(tex, _data);
+}
+
+void Plane::__gc_clear_members() throw() {
+    tex = NULL;
+}
+
+void Plane::__gc_traverse(visitproc _visit, void* _data) {
+    Plane::__gc_traverse_members(_visit, _data);
+    Bumpable::__gc_traverse_members(_visit, _data);
+}
+
+void Plane::__gc_clear() throw() {
+    Plane::__gc_clear_members();
+    Bumpable::__gc_clear_members();
+}
+
+bool Plane::__gc_needtrack() throw() {
+    return true;
+}
+
+string Plane::classname() const throw() { return "Plane"; }
+

@@ -1,0 +1,24 @@
+void StaticTexture::__gc_traverse_members(visitproc _visit, void* _data) {
+}
+
+void StaticTexture::__gc_clear_members() throw() {
+}
+
+void StaticTexture::__gc_traverse(visitproc _visit, void* _data) {
+    StaticTexture::__gc_traverse_members(_visit, _data);
+    Texture::__gc_traverse_members(_visit, _data);
+    Resource::__gc_traverse_members(_visit, _data);
+}
+
+void StaticTexture::__gc_clear() throw() {
+    StaticTexture::__gc_clear_members();
+    Texture::__gc_clear_members();
+    Resource::__gc_clear_members();
+}
+
+bool StaticTexture::__gc_needtrack() throw() {
+    return false;
+}
+
+string StaticTexture::classname() const throw() { return "StaticTexture"; }
+

@@ -1,0 +1,22 @@
+void Mesh::__gc_traverse_members(visitproc _visit, void* _data) {
+    _visit(material, _data);
+}
+
+void Mesh::__gc_clear_members() throw() {
+    material = NULL;
+}
+
+void Mesh::__gc_traverse(visitproc _visit, void* _data) {
+    Mesh::__gc_traverse_members(_visit, _data);
+}
+
+void Mesh::__gc_clear() throw() {
+    Mesh::__gc_clear_members();
+}
+
+bool Mesh::__gc_needtrack() throw() {
+    return true;
+}
+
+string Mesh::classname() const throw() { return "Mesh"; }
+

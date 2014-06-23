@@ -1,0 +1,22 @@
+void Sound::__gc_traverse_members(visitproc _visit, void* _data) {
+}
+
+void Sound::__gc_clear_members() throw() {
+}
+
+void Sound::__gc_traverse(visitproc _visit, void* _data) {
+    Sound::__gc_traverse_members(_visit, _data);
+    Resource::__gc_traverse_members(_visit, _data);
+}
+
+void Sound::__gc_clear() throw() {
+    Sound::__gc_clear_members();
+    Resource::__gc_clear_members();
+}
+
+bool Sound::__gc_needtrack() throw() {
+    return false;
+}
+
+string Sound::classname() const throw() { return "Sound"; }
+

@@ -1,0 +1,22 @@
+void Communicator::__gc_traverse_members(visitproc _visit, void* _data) {
+    _visit(a, _data);
+}
+
+void Communicator::__gc_clear_members() throw() {
+    a = NULL;
+}
+
+void Communicator::__gc_traverse(visitproc _visit, void* _data) {
+    Communicator::__gc_traverse_members(_visit, _data);
+}
+
+void Communicator::__gc_clear() throw() {
+    Communicator::__gc_clear_members();
+}
+
+bool Communicator::__gc_needtrack() throw() {
+    return true;
+}
+
+string Communicator::classname() const throw() { return "Communicator"; }
+

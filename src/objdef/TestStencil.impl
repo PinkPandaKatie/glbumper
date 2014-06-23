@@ -1,0 +1,24 @@
+void TestStencil::__gc_traverse_members(visitproc _visit, void* _data) {
+}
+
+void TestStencil::__gc_clear_members() throw() {
+}
+
+void TestStencil::__gc_traverse(visitproc _visit, void* _data) {
+    TestStencil::__gc_traverse_members(_visit, _data);
+    Texture::__gc_traverse_members(_visit, _data);
+    Resource::__gc_traverse_members(_visit, _data);
+}
+
+void TestStencil::__gc_clear() throw() {
+    TestStencil::__gc_clear_members();
+    Texture::__gc_clear_members();
+    Resource::__gc_clear_members();
+}
+
+bool TestStencil::__gc_needtrack() throw() {
+    return false;
+}
+
+string TestStencil::classname() const throw() { return "TestStencil"; }
+

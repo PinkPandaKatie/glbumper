@@ -1,0 +1,41 @@
+void PathNode::__gc_traverse_members(visitproc _visit, void* _data) {
+    _visit(tgoal, _data);
+    for(vector<NodeLink>::iterator _itr1 = (onodes).begin(); _itr1 != (onodes).end(); ++_itr1) {
+        _visit((*_itr1).n, _data);
+    }
+    _visit(nextn, _data);
+    for(map<sptr<PathNode>, pair<double, sptr<PathNode> > >::iterator _itr1 = (gcache).begin(); _itr1 != (gcache).end(); ++_itr1) {
+        _visit((*_itr1).first, _data);
+        _visit(((*_itr1).second).second, _data);
+    }
+}
+
+void PathNode::__gc_clear_members() throw() {
+    tgoal = NULL;
+    onodes.clear();
+    nextn = NULL;
+    gcache.clear();
+}
+
+void PathNode::__gc_traverse(visitproc _visit, void* _data) {
+    PathNode::__gc_traverse_members(_visit, _data);
+    Bumpable::__gc_traverse_members(_visit, _data);
+    ServerActor::__gc_traverse_members(_visit, _data);
+    BaseActor::__gc_traverse_members(_visit, _data);
+    Actor::__gc_traverse_members(_visit, _data);
+}
+
+void PathNode::__gc_clear() throw() {
+    PathNode::__gc_clear_members();
+    Bumpable::__gc_clear_members();
+    ServerActor::__gc_clear_members();
+    BaseActor::__gc_clear_members();
+    Actor::__gc_clear_members();
+}
+
+bool PathNode::__gc_needtrack() throw() {
+    return true;
+}
+
+string PathNode::classname() const throw() { return "PathNode"; }
+

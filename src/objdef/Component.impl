@@ -1,0 +1,26 @@
+void Component::__gc_traverse_members(visitproc _visit, void* _data) {
+    for(vector<sptr<Component> >::iterator _itr1 = (children).begin(); _itr1 != (children).end(); ++_itr1) {
+        _visit(*_itr1, _data);
+    }
+    _visit(parent, _data);
+}
+
+void Component::__gc_clear_members() throw() {
+    children.clear();
+    parent = NULL;
+}
+
+void Component::__gc_traverse(visitproc _visit, void* _data) {
+    Component::__gc_traverse_members(_visit, _data);
+}
+
+void Component::__gc_clear() throw() {
+    Component::__gc_clear_members();
+}
+
+bool Component::__gc_needtrack() throw() {
+    return true;
+}
+
+string Component::classname() const throw() { return "Component"; }
+

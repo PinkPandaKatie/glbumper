@@ -1,0 +1,24 @@
+void GameInterfaceImpl::__gc_traverse_members(visitproc _visit, void* _data) {
+    _visit(player, _data);
+}
+
+void GameInterfaceImpl::__gc_clear_members() throw() {
+    player = NULL;
+}
+
+void GameInterfaceImpl::__gc_traverse(visitproc _visit, void* _data) {
+    GameInterfaceImpl::__gc_traverse_members(_visit, _data);
+    GameInterface::__gc_traverse_members(_visit, _data);
+}
+
+void GameInterfaceImpl::__gc_clear() throw() {
+    GameInterfaceImpl::__gc_clear_members();
+    GameInterface::__gc_clear_members();
+}
+
+bool GameInterfaceImpl::__gc_needtrack() throw() {
+    return true;
+}
+
+string GameInterfaceImpl::classname() const throw() { return "GameInterfaceImpl"; }
+

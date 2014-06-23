@@ -1,0 +1,32 @@
+void Actor::__gc_traverse_members(visitproc _visit, void* _data) {
+    _visit(world, _data);
+    for(vector<sptr<Area> >::iterator _itr1 = (areas).begin(); _itr1 != (areas).end(); ++_itr1) {
+        _visit(*_itr1, _data);
+    }
+    _visit(appearance, _data);
+    _visit(area, _data);
+}
+
+void Actor::__gc_clear_members() throw() {
+    world = NULL;
+    areas.clear();
+    appearance = NULL;
+    area = NULL;
+}
+
+void Actor::__gc_traverse(visitproc _visit, void* _data) {
+    Actor::__gc_traverse_members(_visit, _data);
+    Bumpable::__gc_traverse_members(_visit, _data);
+}
+
+void Actor::__gc_clear() throw() {
+    Actor::__gc_clear_members();
+    Bumpable::__gc_clear_members();
+}
+
+bool Actor::__gc_needtrack() throw() {
+    return true;
+}
+
+string Actor::classname() const throw() { return "Actor"; }
+

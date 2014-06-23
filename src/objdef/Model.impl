@@ -1,0 +1,30 @@
+void Model::__gc_traverse_members(visitproc _visit, void* _data) {
+    for(vector<sptr<Material> >::iterator _itr1 = (materials).begin(); _itr1 != (materials).end(); ++_itr1) {
+        _visit(*_itr1, _data);
+    }
+    for(vector<sptr<Mesh> >::iterator _itr1 = (meshes).begin(); _itr1 != (meshes).end(); ++_itr1) {
+        _visit(*_itr1, _data);
+    }
+}
+
+void Model::__gc_clear_members() throw() {
+    materials.clear();
+    meshes.clear();
+}
+
+void Model::__gc_traverse(visitproc _visit, void* _data) {
+    Model::__gc_traverse_members(_visit, _data);
+    Resource::__gc_traverse_members(_visit, _data);
+}
+
+void Model::__gc_clear() throw() {
+    Model::__gc_clear_members();
+    Resource::__gc_clear_members();
+}
+
+bool Model::__gc_needtrack() throw() {
+    return true;
+}
+
+string Model::classname() const throw() { return "Model"; }
+

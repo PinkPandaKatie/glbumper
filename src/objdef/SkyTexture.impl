@@ -1,0 +1,24 @@
+void SkyTexture::__gc_traverse_members(visitproc _visit, void* _data) {
+}
+
+void SkyTexture::__gc_clear_members() throw() {
+}
+
+void SkyTexture::__gc_traverse(visitproc _visit, void* _data) {
+    SkyTexture::__gc_traverse_members(_visit, _data);
+    Texture::__gc_traverse_members(_visit, _data);
+    Resource::__gc_traverse_members(_visit, _data);
+}
+
+void SkyTexture::__gc_clear() throw() {
+    SkyTexture::__gc_clear_members();
+    Texture::__gc_clear_members();
+    Resource::__gc_clear_members();
+}
+
+bool SkyTexture::__gc_needtrack() throw() {
+    return false;
+}
+
+string SkyTexture::classname() const throw() { return "SkyTexture"; }
+

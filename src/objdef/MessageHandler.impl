@@ -1,0 +1,22 @@
+void MessageHandler::__gc_traverse_members(visitproc _visit, void* _data) {
+    _visit(conn, _data);
+}
+
+void MessageHandler::__gc_clear_members() throw() {
+    conn = NULL;
+}
+
+void MessageHandler::__gc_traverse(visitproc _visit, void* _data) {
+    MessageHandler::__gc_traverse_members(_visit, _data);
+}
+
+void MessageHandler::__gc_clear() throw() {
+    MessageHandler::__gc_clear_members();
+}
+
+bool MessageHandler::__gc_needtrack() throw() {
+    return true;
+}
+
+string MessageHandler::classname() const throw() { return "MessageHandler"; }
+

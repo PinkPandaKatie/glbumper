@@ -1,0 +1,22 @@
+void Appearance::__gc_traverse_members(visitproc _visit, void* _data) {
+    _visit(act, _data);
+}
+
+void Appearance::__gc_clear_members() throw() {
+    act = NULL;
+}
+
+void Appearance::__gc_traverse(visitproc _visit, void* _data) {
+    Appearance::__gc_traverse_members(_visit, _data);
+}
+
+void Appearance::__gc_clear() throw() {
+    Appearance::__gc_clear_members();
+}
+
+bool Appearance::__gc_needtrack() throw() {
+    return true;
+}
+
+string Appearance::classname() const throw() { return "Appearance"; }
+
